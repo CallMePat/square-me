@@ -24,7 +24,7 @@ const revenueData = {
     { month: "Sep", revenue: 160000 },
     { month: "Oct", revenue: 170000 },
     { month: "Nov", revenue: 220000 },
-    { month: "Dec", revenue: 0 },
+    { month: "Dec", revenue: 110000 },
   ],
 };
 
@@ -93,7 +93,7 @@ export default function PaymentsPage() {
                 <div className="revenue-total">₦0.00 <span className="revenue-text">in total value</span> </div>
               </div>
             </div>
-            <ResponsiveContainer width="100%" height="100%" >
+            <ResponsiveContainer width="100%" height={300} >
               <BarChart
                 data={revenueData.monthly}
                 margin={{
