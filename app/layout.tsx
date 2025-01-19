@@ -32,7 +32,7 @@ export default function RootLayout({
           <div className="main-wrapper">
             <Sidebar isOpen/>
             <main className="content-wrapper">
-              {children}
+            {children}
             </main>
           </div>
         </div>

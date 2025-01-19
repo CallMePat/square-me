@@ -38,7 +38,6 @@ body {
   overflow: hidden;
 }
 
-
 .header-right {
   display: flex;
 }
@@ -182,7 +181,6 @@ body {
   margin-top: 3rem;
   border: 1px solid #e4e4e7;
   width: 325px;
-  /* height: 115px; */
 }
 
 .label {
@@ -291,7 +289,6 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   color: black;
-
 }
 /* Revenue Controls */
 .revenue-controls {
@@ -389,6 +386,165 @@ body {
   font-size: 0.75rem;
 }
 
+.revenue-title-mobile {
+  display: none;
+}
+
+transactions-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  color: #84919a;
+}
+
+/* Header styles */
+.transactions-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.transactions-back-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+/* Filter section */
+.transactions-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  margin-top: 1rem;
+}
+
+.transactions-select {
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+  min-width: 200px;
+  margin-bottom: 2rem;
+  color: #84919a;
+}
+
+.transactions-date-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.transactions-export-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+/* Table styles */
+.transactions-data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  display: none;
+}
+
+.transactions-data-table th,
+.transactions-data-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Card styles for mobile */
+.transactions-cards {
+  display: grid;
+  gap: 16px;
+}
+
+.transaction-card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-card-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.transaction-card-row:last-child {
+  border-bottom: none;
+}
+
+/* Status badges */
+.transaction-status {
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  width: 106px;
+  display: flex;
+  justify-content: center;
+}
+
+.transaction-status-processed {
+  background-color: #effded;
+  color: #5dc090;
+  border: 1px solid #92EF80;
+}
+
+.transaction-status-failed {
+  background-color: #feecee;
+  color: #f14156;
+  border: 1px solid #F14156;
+}
+
+/* Pagination */
+.transactions-pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.transactions-pagination-button {
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  background: white;
+  min-width: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.transactions-pagination-button[aria-current="page"] {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .menu-icon {
@@ -442,5 +598,90 @@ body {
   .dashboard {
     width: 100%;
     padding: 1rem;
+  }
+  .page-title {
+    padding: 0;
+  }
+
+  .content-wrapper {
+    padding: 0;
+  }
+  .time-container {
+    display: none;
+  }
+  .time-selector {
+    display: none;
+  }
+
+  .revenue-card {
+    padding: 0;
+  }
+  .revenue-control-container {
+    border: none;
+  }
+  .revenue-control-container {
+    border: 0.5px solid #e4e4e7;
+    border-radius: 0.55rem;
+    padding: 0.8rem;
+    margin-top: 0;
+  }
+  .revenue-title h2 {
+    display: none;
+  }
+  .revenue-text {
+    display: none;
+  }
+  .revenue-change {
+    display: none;
+  }
+  .revenue-total {
+    display: none;
+  }
+  .revenue-title-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .revenue-dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 12px;
+    border: 0.5px solid #848a9c;
+    padding: 6px;
+    border-radius: 1rem;
+    color: #848a9c;
+  }
+  .account-details {
+    width: 100%;
+  }
+
+  .transactions-back-button {
+    display: block;
+  }
+
+  .transactions-filters {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 1rem;
+  }
+
+  .transactions-date-range {
+    width: 100%;
+  }
+
+  .transactions-select {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .transactions-cards {
+    display: none;
+  }
+
+  .transactions-data-table {
+    display: table;
   }
 }

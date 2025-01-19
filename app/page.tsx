@@ -1,7 +1,7 @@
 "use client";
 
 import View from "@/components/View";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Bar,
   BarChart,
@@ -10,6 +10,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { RiArrowDropDownLine } from "react-icons/ri";
 
 const revenueData = {
   monthly: [
@@ -30,6 +31,41 @@ const revenueData = {
 
 export default function PaymentsPage() {
   const [timeRange, setTimeRange] = useState("Last 7 days");
+  const [chartMargin, setChartMargin] = useState({
+    top: 5,
+    right: 30,
+    left: 20,
+    bottom: 5,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setChartMargin({
+          top: 5,
+          right: 0,
+          left: 0,
+          bottom: 5,
+        });
+      } else {
+        setChartMargin({
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        });
+      }
+    };
+
+    // Set initial margin
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText("8000000000");
@@ -83,25 +119,32 @@ export default function PaymentsPage() {
             </div>
           </div>
 
-          <div className="revenue-control-container" >
+          <div className="revenue-control-container">
             <div className="revenue-controls">
               <div className="revenue-header">
                 <div className="revenue-title">
                   <h2>Revenue</h2>
-                  <span className="revenue-change">+0.00% <span className="revenue-text"> vs Last 7 days</span></span>
+                  <span className="revenue-change">
+                    +0.00% <span className="revenue-text"> vs Last 7 days</span>
+                  </span>
                 </div>
-                <div className="revenue-total">₦0.00 <span className="revenue-text">in total value</span> </div>
+                <div className="revenue-title-mobile">
+                  <h2>Revenue</h2>
+                  <div className="revenue-dropdown">
+                    <span>Weekly</span>
+                    <RiArrowDropDownLine />
+                  </div>
+                </div>
+
+                <div className="revenue-total">
+                  ₦0.00 <span className="revenue-text">in total value</span>{" "}
+                </div>
               </div>
             </div>
-            <ResponsiveContainer width="100%" height={300} >
+            <ResponsiveContainer width="100%" height={300}>
               <BarChart
                 data={revenueData.monthly}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
+                margin={chartMargin}
               >
                 <CartesianGrid
                   strokeDasharray="3 3"
@@ -121,7 +164,6 @@ export default function PaymentsPage() {
                   tick={{ fill: "#8686AC" }}
                   tickFormatter={(value) => `${value / 1000}K`}
                   fontSize={12}
-
                 />
                 <Bar
                   dataKey="revenue"
